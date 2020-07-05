@@ -341,3 +341,6 @@ healthchecksdb
 
 #App settings
 appsettings.json
+
+#Test Ignore
+TestIgnore.cs
