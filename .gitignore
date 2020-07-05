@@ -341,6 +341,11 @@ healthchecksdb
 
 #App settings
 appsettings.json
+appsettings.Development.json
 
-#Test Ignore
-TestIgnore.cs
+#Databases
+*.db
+*.db-shm
+*.db-wal
+
+
