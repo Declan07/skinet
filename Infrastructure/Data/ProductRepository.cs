@@ -5,6 +5,7 @@ using Core.Interfaces;
 using Core.Entities;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Infrastructure.Data
 {
@@ -20,17 +21,13 @@ namespace Infrastructure.Data
 
         public async Task<IReadOnlyList<Product>> GetProductAsync()
         {
+            //Change later
             return await _context.Products
                 .Include(p => p.ProductType)
                 .Include(p => p.ProductBrand)
                 .ToListAsync();
+                
         }
-
-        public async Task<IReadOnlyList<ProductBrand>> GetProductBrandAsync()
-        {
-            return await _context.ProductBrands.ToListAsync();
-        }
-
         public async Task<Product> GetProductByIdAsync(int id)
         {
             return await _context.Products
@@ -38,6 +35,13 @@ namespace Infrastructure.Data
                 .Include(p => p.ProductBrand)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
+
+        public async Task<IReadOnlyList<ProductBrand>> GetProductBrandAsync()
+        {
+            return await _context.ProductBrands.ToListAsync();
+        }
+
+       
 
         public async Task<IReadOnlyList<ProductType>> GetProductTypeAsync()
         {
